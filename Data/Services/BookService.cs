@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Summaries.Data.Models;
 
 namespace Summaries.Data.Services
@@ -17,7 +18,7 @@ namespace Summaries.Data.Services
 
         public List<Book> GetAllBooks()
         {
-            throw new System.NotImplementedException();
+            return Data.Books.ToList();
         }
 
         public Book GetBookById(int id)
