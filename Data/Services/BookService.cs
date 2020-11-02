@@ -13,7 +13,8 @@ namespace Summaries.Data.Services
 
         public void DeleteBook(int id)
         {
-            throw new System.NotImplementedException();
+            var book = Data.Books.FirstOrDefault(n => n.Id == id);
+            Data.Books.Remove(book);
         }
 
         public List<Book> GetAllBooks()
@@ -29,7 +30,7 @@ namespace Summaries.Data.Services
         public void UpdateBook(int id, Book newBook)
         {
             var oldBook = Data.Books.FirstOrDefault(n => n.Id == id);
-            if(oldBook != null)
+            if (oldBook != null)
             {
                 oldBook.Title = newBook.Title;
                 oldBook.Author = newBook.Author;
