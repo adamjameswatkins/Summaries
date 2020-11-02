@@ -27,7 +27,17 @@ namespace Summaries.Controllers
         public IActionResult GetBooks()
         {
             var allBooks = _service.GetAllBooks();
+
             return Ok(allBooks);
+        }
+
+        //Updating an existing book
+        [HttpPut("UpdateBook/{id}")]
+        public IActionResult UpdateBook(int id, [FromBody]Book book)
+        {
+            _service.UpdateBook(id,book);
+
+            return Ok(book);
         }
     }
 }

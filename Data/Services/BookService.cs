@@ -28,7 +28,16 @@ namespace Summaries.Data.Services
 
         public void UpdateBook(int id, Book newBook)
         {
-            throw new System.NotImplementedException();
+            var oldBook = Data.Books.FirstOrDefault(n => n.Id == id);
+            if(oldBook != null)
+            {
+                oldBook.Title = newBook.Title;
+                oldBook.Author = newBook.Author;
+                oldBook.Description = newBook.Description;
+                oldBook.Rate = newBook.Rate;
+                oldBook.DateStart = newBook.DateStart;
+                oldBook.DateRead = newBook.DateRead;
+            }
         }
     }
 }
