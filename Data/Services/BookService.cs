@@ -24,7 +24,7 @@ namespace Summaries.Data.Services
 
         public Book GetBookById(int id)
         {
-            throw new System.NotImplementedException();
+            return Data.Books.FirstOrDefault(n=>n.Id == id);
         }
 
         public void UpdateBook(int id, Book newBook)
