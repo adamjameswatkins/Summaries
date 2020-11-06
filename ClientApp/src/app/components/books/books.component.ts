@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BooksComponent implements OnInit {
 
+  public books: Book[];
   constructor() { }
 
   ngOnInit() {
