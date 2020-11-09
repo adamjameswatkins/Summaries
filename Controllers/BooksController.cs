@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
 using Summaries.Data.Models;
 using Summaries.Data.Services;
@@ -18,8 +19,20 @@ namespace Summaries.Controllers
         [HttpPost("AddBook")]
         public IActionResult AddBook([FromBody] Book book)
         {
-            _service.AddBook(book);
-            return Ok();
+            try
+            {
+                if (book.Author != null && book.Title != null && book.Description != null)
+                {
+                    _service.AddBook(book);
+                    return Ok(book);
+                }
+
+                return BadRequest("Book was not added");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         //Read all books
@@ -33,9 +46,9 @@ namespace Summaries.Controllers
 
         //Updating an existing book
         [HttpPut("UpdateBook/{id}")]
-        public IActionResult UpdateBook(int id, [FromBody]Book book)
+        public IActionResult UpdateBook(int id, [FromBody] Book book)
         {
-            _service.UpdateBook(id,book);
+            _service.UpdateBook(id, book);
 
             return Ok(book);
         }
@@ -54,7 +67,7 @@ namespace Summaries.Controllers
         public IActionResult GetBookById(int id)
         {
             var book = _service.GetBookById(id);
-            
+
             return Ok(book);
         }
     }
