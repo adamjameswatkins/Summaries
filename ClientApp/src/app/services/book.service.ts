@@ -21,4 +21,8 @@ export class BookService {
   getBookById(id: number) {
     return this.http.get<Book>(this._baseUrl + "/SingleBook/" + id);
   }
+
+  updateBook(book: Book) {
+    return this.http.put(this._baseUrl + "/UpdateBook/" + book.id, book);
+  }
 }
