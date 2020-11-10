@@ -1,3 +1,4 @@
-export interface AppState {
+export interface AppState
+{
     readonly books: Book[];
 }
