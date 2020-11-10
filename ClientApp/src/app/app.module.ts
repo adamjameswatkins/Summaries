@@ -13,8 +13,8 @@ import { NewBookComponent } from './components/new-book/new-book.component';
 import { ShowBookComponent } from './components/show-book/show-book.component';
 import { UpdateBookComponent } from './components/update-book/update-book.component';
 import { BookService } from './services/book.service';
-
-import { AuthModule } from '@auth0/auth0-angular';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -34,17 +34,14 @@ import { AuthModule } from '@auth0/auth0-angular';
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'books', component: BooksComponent },
-      { path: 'new-book', component: NewBookComponent },
-      { path: 'update-book/:id', component: UpdateBookComponent },
-      { path: 'delete-book/:id', component: DeleteBookComponent },
-      { path: 'book/:id', component: ShowBookComponent },
-    ]),AuthModule.forRoot({
-      domain: 'dev-ilmy6tzi.eu.auth0.com',
-      clientId: 'eL1x23gklQhXaz1KiP33kcRC0ITavH8F'
-    })
+      { path: 'books', component: BooksComponent, canActivate: [AuthGuard] },
+      { path: 'new-book', component: NewBookComponent, canActivate: [AuthGuard] },
+      { path: 'update-book/:id', component: UpdateBookComponent, canActivate: [AuthGuard] },
+      { path: 'delete-book/:id', component: DeleteBookComponent, canActivate: [AuthGuard] },
+      { path: 'book/:id', component: ShowBookComponent, canActivate: [AuthGuard] },
+    ])
   ],
-  providers: [BookService],
+  providers: [BookService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
