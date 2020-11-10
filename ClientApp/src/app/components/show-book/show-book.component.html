@@ -6,8 +6,8 @@
             <p>
                 {{book.description}}
             </p>
-            <a [routerLink]="['/books']" class="card-link">Back</a>
-            <a [routerLink]="['/update-book', book.id]" class="card-link">Update</a>
+            <button class="btn btn-success" [routerLink]="['/update-book', book.id]">Update</button>
+            <button class="btn btn-secondary" [routerLink]="['/books']">Back</button>
         </div>
     </div>
 </div>
