@@ -14,6 +14,8 @@ import { ShowBookComponent } from './components/show-book/show-book.component';
 import { UpdateBookComponent } from './components/update-book/update-book.component';
 import { BookService } from './services/book.service';
 
+import { AuthModule } from '@auth0/auth0-angular';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +39,10 @@ import { BookService } from './services/book.service';
       { path: 'update-book/:id', component: UpdateBookComponent },
       { path: 'delete-book/:id', component: DeleteBookComponent },
       { path: 'book/:id', component: ShowBookComponent },
-    ])
+    ]),AuthModule.forRoot({
+      domain: 'dev-ilmy6tzi.eu.auth0.com',
+      clientId: 'eL1x23gklQhXaz1KiP33kcRC0ITavH8F'
+    })
   ],
   providers: [BookService],
   bootstrap: [AppComponent]
