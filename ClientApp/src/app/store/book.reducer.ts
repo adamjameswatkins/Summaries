@@ -15,7 +15,7 @@ export function BookReducer(state = initialState, action: bookActions.Actions) {
             }
         case types.DELETE_BOOK_SUCCESS:
             {
-                return { ...state, book: action.payload }
+                return {...state, books: state.books.filter(book => book.id != action.payload)}
             }
         default:
             return state;
