@@ -26,8 +26,8 @@ export class BookEffects {
   @Effect() deleteBook$: Observable<Action> = this.actions$.pipe(
     ofType<bookActions.deleteBookAction>(types.DELETE_BOOK),
     mergeMap(action =>
-      this.service.deleteBook(action.payload).pipe(map((book: Book) =>
-        new bookActions.deleteBookSuccessAction(book.id)))
+      this.service.deleteBook(action.payload).pipe(map(() =>
+        new bookActions.deleteBookSuccessAction(action.payload)))
     )
   )
 }
