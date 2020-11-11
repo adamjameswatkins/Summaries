@@ -22,7 +22,7 @@ export class deleteBookAction implements Action
 export class deleteBookSuccessAction implements Action
 {
     readonly type = types.DELETE_BOOK_SUCCESS;
-    constructor(public payload: Book) { }
+    constructor(public payload: number){}
 }
 
 export type Actions = loadBooksAction | loadBooksSuccessAction | deleteBookAction | deleteBookSuccessAction
