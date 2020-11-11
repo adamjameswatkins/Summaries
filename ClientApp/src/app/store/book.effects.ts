@@ -17,10 +17,18 @@ export class BookEffects
 		private actions$: Actions) { }
 
     @Effect() loadBooks$: Observable<Action> = this.actions$.pipe(
-        ofType<bookActions.loadBooksAction>(types.LOAD_BOOKS),
-        mergeMap(() =>
-            this.service.getAllBooks().pipe(map(books =>
-				new bookActions.loadBooksSuccessAction(books)))
-        )
-    )
+      ofType<bookActions.loadBooksAction>(types.LOAD_BOOKS),
+      mergeMap(() =>
+          this.service.getAllBooks().pipe(map(books =>
+      new bookActions.loadBooksSuccessAction(books)))
+      )
+  )
+
+  @Effect() deleteBook$: Observable<Action> = this.actions$.pipe(
+      ofType<bookActions.deleteBookAction>(types.DELETE_BOOK),
+      mergeMap(action =>
+          this.service.deleteBook(action.payload).pipe(map((book:Book) =>
+      new bookActions.deleteBookSuccessAction(book)))
+      )
+  )
 }
