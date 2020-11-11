@@ -1,4 +1,4 @@
-<div class="update-book">
+<div *ngIf="updateBookForm" class="update-book">
     <form [formGroup]="updateBookForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label for="title" class="required">Title</label>
@@ -33,6 +33,6 @@
             </div>
         </div>
         <button class="btn btn-success" type="submit">Update</button>
-        <button class="btn btn-default" [routerLink]="['/books']">Cancel</button>
+        <button class="btn btn-secondary" [routerLink]="['/books']">Cancel</button>
     </form>
 </div>

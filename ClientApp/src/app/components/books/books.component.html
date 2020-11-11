@@ -1,4 +1,4 @@
-<h1>Book summaries</h1>>
+<h1>Book summaries</h1>
 
 <p *ngIf="!books"><b>Loading...</b></p>
 
@@ -25,7 +25,7 @@
             <td>{{book.dateRead | date: "dd/MM/yyyy"}}</td>
             <td>{{book.dateRead ? "Read" : book.dateStart ? "In Progress" : "Not Started"}}</td>
             <td>
-                <button type="button" class="btn btn-default btn-sm" (click)="showBook(book.id)">
+                <button type="button" class="btn btn-secondary btn-sm" (click)="showBook(book.id)">
                     Show
                 </button>
                 <button type="button" class="btn btn-success btn-sm" (click)="updateBook(book.id)">

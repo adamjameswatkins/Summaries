@@ -15,6 +15,10 @@ import { UpdateBookComponent } from './components/update-book/update-book.compon
 import { BookService } from './services/book.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './auth.guard';
+import { StoreModule } from '@ngrx/store';
+import { BookReducer } from './store/book.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { BookEffects } from './store/book.effects';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,9 @@ import { AuthGuard } from './auth.guard';
       { path: 'update-book/:id', component: UpdateBookComponent, canActivate: [AuthGuard] },
       { path: 'delete-book/:id', component: DeleteBookComponent, canActivate: [AuthGuard] },
       { path: 'book/:id', component: ShowBookComponent, canActivate: [AuthGuard] },
-    ])
+    ]),
+    StoreModule.forRoot({applicationState: BookReducer}),
+    EffectsModule.forRoot([BookEffects])
   ],
   providers: [BookService, AuthService],
   bootstrap: [AppComponent]
