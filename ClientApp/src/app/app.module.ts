@@ -13,6 +13,8 @@ import { NewBookComponent } from './components/new-book/new-book.component';
 import { ShowBookComponent } from './components/show-book/show-book.component';
 import { UpdateBookComponent } from './components/update-book/update-book.component';
 import { BookService } from './services/book.service';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './auth.guard';
 import { StoreModule } from '@ngrx/store';
 import { BookReducer } from './store/book.reducer';
 import { EffectsModule } from '@ngrx/effects';
@@ -36,16 +38,16 @@ import { BookEffects } from './store/book.effects';
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'books', component: BooksComponent },
-      { path: 'new-book', component: NewBookComponent },
-      { path: 'update-book/:id', component: UpdateBookComponent },
-      { path: 'delete-book/:id', component: DeleteBookComponent },
-      { path: 'book/:id', component: ShowBookComponent },
+      { path: 'books', component: BooksComponent, canActivate: [AuthGuard] },
+      { path: 'new-book', component: NewBookComponent, canActivate: [AuthGuard] },
+      { path: 'update-book/:id', component: UpdateBookComponent, canActivate: [AuthGuard] },
+      { path: 'delete-book/:id', component: DeleteBookComponent, canActivate: [AuthGuard] },
+      { path: 'book/:id', component: ShowBookComponent, canActivate: [AuthGuard] },
     ]),
     StoreModule.forRoot({applicationState: BookReducer}),
     EffectsModule.forRoot([BookEffects])
   ],
-  providers: [BookService],
+  providers: [BookService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
