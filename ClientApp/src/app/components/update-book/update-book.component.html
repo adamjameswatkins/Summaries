@@ -1,4 +1,4 @@
-<div class="update-book">
+<div *ngIf="updateBookForm" class="update-book">
     <form [formGroup]="updateBookForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label for="title" class="required">Title</label>

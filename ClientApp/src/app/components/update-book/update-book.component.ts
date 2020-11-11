@@ -9,8 +9,8 @@ import { BookService } from 'src/app/services/book.service';
   styleUrls: ['./update-book.component.css']
 })
 export class UpdateBookComponent implements OnInit {
-  book: Book;
   updateBookForm: FormGroup;
+  book: Book;
 
   constructor(private service: BookService, private route: ActivatedRoute, private router: Router, private fb: FormBuilder) { }
 

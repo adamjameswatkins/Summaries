@@ -9,7 +9,6 @@ import { BookService } from 'src/app/services/book.service';
   styleUrls: ['./new-book.component.css']
 })
 export class NewBookComponent implements OnInit {
-
   addBookForm: FormGroup;
   showError: boolean = false;
 
