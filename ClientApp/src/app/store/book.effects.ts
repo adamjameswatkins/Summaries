@@ -6,7 +6,11 @@ import * as types from './action.types';
 import * as bookActions from './book.actions';
 
 import { Observable } from "rxjs";
+import { Injectable } from "@angular/core";
 
+@Injectable({
+  providedIn: 'root'
+})
 export class BookEffects
 {
     constructor(private service: BookService,
