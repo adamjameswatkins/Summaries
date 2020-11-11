@@ -13,4 +13,16 @@ export class loadBooksSuccessAction implements Action
     constructor(public payload: Book[]) { }
 }
 
-export type Actions = loadBooksAction | loadBooksSuccessAction
+export class deleteBookAction implements Action
+{
+    readonly type = types.DELETE_BOOK;
+    constructor(public payload: number) { }
+}
+
+export class deleteBookSuccessAction implements Action
+{
+    readonly type = types.DELETE_BOOK_SUCCESS;
+    constructor(public payload: Book) { }
+}
+
+export type Actions = loadBooksAction | loadBooksSuccessAction | deleteBookAction | deleteBookSuccessAction

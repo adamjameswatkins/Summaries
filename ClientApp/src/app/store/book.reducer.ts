@@ -8,13 +8,16 @@ export const initialState: AppState =
 }
 
 export function BookReducer(state = initialState, action: bookActions.Actions) {
-    switch (action.type)
-	{
+    switch (action.type) {
         case types.LOAD_BOOKS_SUCCESS:
             {
                 return { ...state, books: action.payload }
             }
+        case types.DELETE_BOOK_SUCCESS:
+            {
+                return { ...state, book: action.payload }
+            }
         default:
-                return state;
+            return state;
     }
 }
